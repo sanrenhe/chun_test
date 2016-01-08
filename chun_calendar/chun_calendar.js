@@ -25,15 +25,48 @@ calendar.prototype = {
 	},
 	// 创建Calender
 	createCalender : function(that, time){
-		// 得到该月的日期数据
+		// 得到该月的日期数据模板
 		var cal_rows = that.getCalenderValue(that, time);
 		// 得到该月所有日期数据
 		var arr = that.getShowCalValues(time.getFullYear(), time.getMonth());
+		// 最外层div
+		var div = document.createElement("div");
+		div.id = "div";
+		document.body.appendChild(div);
 		// 创建日历容器div
 		var cal_div = document.createElement("div");
 		cal_div.id = "calDiv";
-		document.body.appendChild(cal_div);
-		cal_div.appendChild(cal_rows);
+		div.appendChild(cal_div);
+		// 创建日期显示容器div
+		var cal_title = document.createElement("div");
+		cal_title.id = "calTitle";
+		cal_div.appendChild(cal_title);
+		// 创建向前翻一年按钮
+		var cal_button_preYear = document.createElement("button");
+		cal_button_preYear.innerHTML = "<<";
+		cal_button_preYear.id = "cal_button_preYear";
+		cal_button_preYear.className = "prev";
+		cal_title.appendChild(cal_button_preYear);
+		// 创建向前翻一个月按钮
+		var cal_button_preMonth = document.createElement("button");
+		cal_button_preMonth.innerHTML = "<";
+		cal_button_preMonth.id = "cal_button_preMonth";
+		cal_button_preMonth.className = "prev";
+		cal_title.appendChild(cal_button_preMonth);
+		// 渲染日期显示
+		cal_title.appendChild(cal_rows);
+		// 创建向后翻一个月按钮
+		var cal_button_nextMonth = document.createElement("button");
+		cal_button_nextMonth.innerHTML = ">";
+		cal_button_nextMonth.id = "cal_button_nextMonth";
+		cal_button_nextMonth.className = "next";
+		cal_title.appendChild(cal_button_nextMonth);
+		// 创建向后翻一年按钮
+		var cal_button_nextYear = document.createElement("button");
+		cal_button_nextYear.innerHTML = ">>";
+		cal_button_nextYear.id = "cal_button_nextYear";
+		cal_button_nextYear.className = "next";
+		cal_title.appendChild(cal_button_nextYear);
 		// 创建日历表格 table
 		var cal_table = document.createElement("table");
 		cal_table.id = "calTable";
@@ -52,15 +85,24 @@ calendar.prototype = {
 		};
 		// table-tbody
 		var cal_tbody = document.createElement("tbody");
+		cal_tbody.id = "cal_tbody";
 		cal_table.appendChild(cal_tbody);
-
+		that.createTbody(false,arr);
+		// prev按钮事件
+		that.prevButtonEvent(that);
+		// next按钮事件
+		that.nextButtonEvent(that);
+	},
+	// 创建日期表格
+	createTbody : function(createFlag,arr){
+		this.isFisrtCreat(createFlag);
 		var cal_tbody_tr_id = ""; 
 		for(var row=0; row<6; row++){
 			// table-tbody-tr
 			var cal_tbody_tr = document.createElement("tr");
 			cal_tbody_tr_id = "cal_tbody_tr" + row
 			cal_tbody_tr.id = cal_tbody_tr_id;
-			cal_tbody.appendChild(cal_tbody_tr);
+			document.getElementById("cal_tbody").appendChild(cal_tbody_tr);
 			for(var col=0; col<7; col++){
 				// table-tbody-tr-td
 				var cal_tbody_tr_td = document.createElement("td");
@@ -68,6 +110,18 @@ calendar.prototype = {
 				document.getElementById(cal_tbody_tr_id).appendChild(cal_tbody_tr_td);
 			}
 		};
+	},
+	// 判断是否首次载入
+	isFisrtCreat : function(createFlag){
+		if(createFlag){
+			var $cal_tbody = document.getElementById("cal_tbody");
+			var len = $cal_tbody.childNodes.length;
+			for(var i=len-1; i>=0; i--){
+				$cal_tbody.removeChild($cal_tbody.childNodes[i]);
+			}
+		}else{
+			return false;
+		}
 	},
 	// 得到Calender的所有数据
 	getCalenderValue : function(that, time){
@@ -80,6 +134,7 @@ calendar.prototype = {
 		    day = that.doHandleStr(time.getDate());
 		// 渲染第一行数据
 		var firstRowValues = document.createElement("h4");
+		firstRowValues.id = "cal_title_h4";
 		firstRowValues.innerHTML = time.getFullYear() + "-" + month + "-" + day;
 		return firstRowValues;
 	},
@@ -128,7 +183,7 @@ calendar.prototype = {
 					}
 				}
 				if(row == 5){
-					if(cal_rows[row][col]=="" && cal_rows[6][6]<8){
+					if(cal_rows[row][col]=="" && cal_rows[4][6]<8){
 						cal_rows[row][col] = nextMonthday.toString();
 						nextMonthday++;
 					}else if(cal_rows[row][col] == ""){
@@ -139,5 +194,63 @@ calendar.prototype = {
 			}
 		};
 		return cal_rows;
+	},
+	prevButtonEvent : function(that){
+		var $prevYear = document.getElementById("cal_button_preYear");
+		$prevYear.onclick = function(){
+			var caltime = document.getElementById("cal_title_h4").innerHTML;
+			var yearMonthDate = caltime.split("-");
+			var year = parseInt(yearMonthDate[0]) - 1;
+			var month = parseInt(yearMonthDate[1]) - 1;
+			var date = parseInt(yearMonthDate[2]);
+			var arr = that.getShowCalValues(year, month);
+			document.getElementById("cal_title_h4").innerHTML = year + "-" + (month+1) + "-" + date;
+			that.createTbody(true,arr);
+		};
+		var $prevMonth = document.getElementById("cal_button_preMonth");
+		$prevMonth.onclick = function(){
+			var caltime = document.getElementById("cal_title_h4").innerHTML;
+			var yearMonthDate = caltime.split("-");
+			if(yearMonthDate[1] == 1){
+				var year = parseInt(yearMonthDate[0]) - 1;
+				var month = 11;
+			}else{
+				var year = parseInt(yearMonthDate[0]);
+				var month = parseInt(yearMonthDate[1]) - 2;
+			}
+			var date = parseInt(yearMonthDate[2]);
+			var arr = that.getShowCalValues(year, month);
+			document.getElementById("cal_title_h4").innerHTML = year + "-" + (month+1) + "-" + date;
+			that.createTbody(true,arr);
+		};
+	},
+	nextButtonEvent : function(that){
+		var $nextYear = document.getElementById("cal_button_nextYear");
+		$nextYear.onclick = function(){
+			var caltime = document.getElementById("cal_title_h4").innerHTML;
+			var yearMonthDate = caltime.split("-");
+			var year = parseInt(yearMonthDate[0]) + 1;
+			var month = parseInt(yearMonthDate[1]) - 1;
+			var date = parseInt(yearMonthDate[2]);
+			var arr = that.getShowCalValues(year, month);
+			document.getElementById("cal_title_h4").innerHTML = year + "-" + (month+1) + "-" + date;
+			that.createTbody(true,arr);
+		};
+		var $nextMonth = document.getElementById("cal_button_nextMonth");
+		$nextMonth.onclick = function(){
+			var caltime = document.getElementById("cal_title_h4").innerHTML;
+			var yearMonthDate = caltime.split("-");
+			if(yearMonthDate[1] == 12){
+				var year = parseInt(yearMonthDate[0]) + 1;
+				var month = 0;
+			}else{
+				var year = parseInt(yearMonthDate[0]);
+				var month = parseInt(yearMonthDate[1]);
+			}
+			var date = parseInt(yearMonthDate[2]);
+			var arr = that.getShowCalValues(year, month);
+			document.getElementById("cal_title_h4").innerHTML = year + "-" + (month+1) + "-" + date;
+			that.createTbody(true,arr);
+		};
 	},
 }
