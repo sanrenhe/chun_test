@@ -1,19 +1,19 @@
-#div {
+div#div {
 	position: relative;
 	left: 50%;
 	top: 50px;
-	padding: 10px;
 	width:230px;
 	height: 160px;
 	display: inline-block;
-	padding: 0 10px;
+	padding: 10px 10px;
     zoom: 1;
     letter-spacing: normal;
     word-spacing: normal;
     vertical-align: top;
-    border: 1px solid blue;
+    border: 1px solid;
+    border-color: #85BEE5 #3485C0 #3485C0 #85BEE5;
 }
-#calDiv {
+div#calDiv {
 	position: relative;
 	padding: 10px;
 	width:200px;
@@ -24,21 +24,21 @@
     word-spacing: normal;
     vertical-align: top;
 }
-#calTitle {
+div#calTitle {
 	width:300px;
 	height: 20px;
 }
-.prev {
+button.prev {
 	width: 20px;
 	float: left;
 	padding: 0px;
 }
-.next {
+button.next {
 	width: 20px;
 	float: left;
 	padding: 0px;
 } 
-h4 {
+h4#cal_title_h4 {
 	width: 130px;
 	text-align: center;
 	border-bottom: 1px solid;
@@ -46,12 +46,29 @@ h4 {
 	margin-top: 5px;
 	float: left;
 }
-#calTable {
+table#calTable {
 	width: 210px;
 	border-collapse:collapse;
 	border-spacing: 0;
 }
 table>tbody>tr,table>tbody>tr>td {
-	border: 1px solid gray;
+	border: 1px solid #909090;
 	text-align: center;
+}
+a {
+	display: block;
+	text-decoration: none;
+	color: #404040;
+}
+a.prevMonth,a.nextMonth {
+	background-color: #D0D0D0;
+	color: #606060;
+
+}
+a.nowMonth:hover {
+	background-color: #5792DC;
+}
+a#choose {
+	background-color: #5792DC;
+	color: #FFF;
 }

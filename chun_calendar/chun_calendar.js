@@ -92,9 +92,13 @@ calendar.prototype = {
 		that.prevButtonEvent(that);
 		// next按钮事件
 		that.nextButtonEvent(that);
+		// 日期点击事件
+		that.dateClickEvent(that);
 	},
 	// 创建日期表格
 	createTbody : function(createFlag,arr){
+		var caltime = document.getElementById("cal_title_h4").innerHTML;
+		var yearMonthDate = caltime.split("-");
 		this.isFisrtCreat(createFlag);
 		var cal_tbody_tr_id = ""; 
 		for(var row=0; row<6; row++){
@@ -106,8 +110,18 @@ calendar.prototype = {
 			for(var col=0; col<7; col++){
 				// table-tbody-tr-td
 				var cal_tbody_tr_td = document.createElement("td");
-				cal_tbody_tr_td.innerHTML = arr[row][col];
+				cal_tbody_tr_td.setAttribute("data-date", arr[row][col].split("/")[1]);
+				cal_tbody_tr_td.className = "calDate";
 				document.getElementById(cal_tbody_tr_id).appendChild(cal_tbody_tr_td);
+				// table-tbody-tr-td-a
+				var cal_tbody_tr_td_a = document.createElement("a");
+				cal_tbody_tr_td_a.href = "javascript:;";
+				cal_tbody_tr_td_a.innerHTML = arr[row][col].split("-")[0];
+				cal_tbody_tr_td_a.className = arr[row][col].split("-")[1].split("/")[0];
+				if(arr[row][col].split("-")[0] == yearMonthDate[2] && arr[row][col].split("-")[1].split("/")[0] == "nowMonth"){
+					cal_tbody_tr_td_a.id = "choose";
+				};
+				cal_tbody_tr_td.appendChild(cal_tbody_tr_td_a);
 			}
 		};
 	},
@@ -158,37 +172,36 @@ calendar.prototype = {
 		 	preMonthday = this.daysOfMonth[month-1<0 ? 11 : month-1] - currentMonthTopDay + 1,// 前一个月在该月视图中的日期
 		 	nowMonthday = 1,// 该月日期数
 		 	nextMonthday = 1,// 下个月日期数
-		 	nextMonthdayB = 1,// 下个月日期数B
 		 	startFlag = false;// 填充该月日期数标识
 		// 填充数据
 		for(var row=0; row<6; row++){
 			cal_rows[row] = ['','','','','','',''];
 			for(var col=0; col<7; col++){
 				if(col < currentMonthTopDay && row==0){
-					cal_rows[row][col] = preMonthday.toString();
+					cal_rows[row][col] = preMonthday.toString() + "-" + "prevMonth";
 					preMonthday++;
 				}
 				if(!startFlag && col==currentMonthTopDay){
-					cal_rows[row][col] = nowMonthday.toString();
+					cal_rows[row][col] = nowMonthday.toString() + "-"  + "nowMonth" + "/" + year + "-" + (month+1) + "-" + nowMonthday;
 					startFlag = true;
 					nowMonthday++;
 				}else if(startFlag && nowMonthday <= days){
-					cal_rows[row][col] = nowMonthday.toString();
+					cal_rows[row][col] = nowMonthday.toString() + "-"  + "nowMonth" + "/" + year + "-" + (month+1) + "-" + nowMonthday;
 					nowMonthday++;
 					if(nowMonthday == days+1){
 						for(var i=1; i<7-col; i++){
-							cal_rows[row][col+i] = nextMonthday.toString();
+							cal_rows[row][col+i] = nextMonthday.toString() + "-"  + "nextMonth";
 							nextMonthday++;
 						}
 					}
 				}
 				if(row == 5){
 					if(cal_rows[row][col]=="" && cal_rows[4][6]<8){
-						cal_rows[row][col] = nextMonthday.toString();
+						cal_rows[row][col] = nextMonthday.toString() + "-"  + "nextMonth";
 						nextMonthday++;
 					}else if(cal_rows[row][col] == ""){
-						cal_rows[row][col] = nextMonthdayB.toString();
-						nextMonthdayB++;
+						cal_rows[row][col] = nextMonthday.toString() + "-"  + "nextMonth";
+						nextMonthday++;
 					}
 				}
 			}
@@ -252,5 +265,23 @@ calendar.prototype = {
 			document.getElementById("cal_title_h4").innerHTML = year + "-" + (month+1) + "-" + date;
 			that.createTbody(true,arr);
 		};
+	},
+	dateClickEvent : function(that){
+		var $table = document.getElementById("calTable");
+		$table.addEventListener('click', chooseDate, false);
+		function chooseDate(e){
+			var $a = e.target;
+			if($a.className == "prevMonth" || $a.className == "nextMonth" || $a.nodeName != "A"){
+				return false;
+			};
+			document.getElementById("choose").setAttribute("id", "");
+			$a.setAttribute("id", "choose");
+			var caltime = document.getElementById("cal_title_h4").innerHTML;
+			var yearMonthDate = caltime.split("-");
+			var year = parseInt(yearMonthDate[0]);
+			var month = parseInt(yearMonthDate[1]);
+			document.getElementById("cal_title_h4").innerHTML = year + "-" + month + "-" + $a.innerHTML;
+			console.log($a.parentElement.getAttribute("data-date"));
+		}
 	},
 }
