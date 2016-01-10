@@ -1,0 +1,8 @@
+div#picViewDiv {
+	position: relative;
+	left: 50%;
+	top: 50%;
+	width: 400px;
+	height: 200px;
+	border: 1px solid #D0D0D0;
+}
