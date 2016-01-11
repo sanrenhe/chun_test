@@ -5,4 +5,39 @@ div#picViewDiv {
 	width: 400px;
 	height: 200px;
 	border: 1px solid #D0D0D0;
+	overflow: hidden;
+}
+ul#picUl {
+	padding: 0px;
+	margin: 0px;
+	width: 2000px;
+}
+ul#picUlBtn {
+	position: absolute;
+	padding: 0px;
+	margin: 0px;
+	top: 90%;
+	left: 60%;
+	width: 150px;
+	z-index: 99999;
+}
+li.liContent {
+	float: left;
+	list-style: none;
+	width: 400px;
+	height: 200px;
+	left: 0px;
+}
+li.liBottom {
+	float: right;
+	list-style: none;
+	padding-left: 5px;
+	padding-right: 5px;
+	margin-left: 5px;
+	border-radius: 30px;
+	background-color: #FF6600;
+}
+img {
+	width: 400px;
+	height: 200px;
 }
