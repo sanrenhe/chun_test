@@ -10,7 +10,8 @@ div#picViewDiv {
 ul#picUl {
 	padding: 0px;
 	margin: 0px;
-	width: 2000px;
+	width: 100%;
+	position: relative;
 }
 ul#picUlBtn {
 	position: absolute;
