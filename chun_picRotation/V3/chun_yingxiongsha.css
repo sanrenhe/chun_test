@@ -1,0 +1,21 @@
+div#picViewDiv {
+	position: relative;
+	left: 10%;
+	top:50%;
+	width: 800px;
+	height: 600px;
+	border: 1px solid black;
+	overflow: hidden;
+}
+ul#picUl {
+	padding-top: 100px;
+	width: 800px;
+}
+li,img {
+	float: left;
+	list-style: none;
+	left: 0px;
+	width: 100px;
+	height: 200px;
+	border: 1px solid grey;
+}
