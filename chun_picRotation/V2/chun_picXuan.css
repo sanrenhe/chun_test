@@ -1,0 +1,44 @@
+div {
+	position: absolute;
+	left: 10%;
+	top: 10%;
+	height: 800px;
+	width: 600px;
+	border: 1px solid black;
+}
+img#img0 {
+	width:150px;
+	height: 200px;
+}
+img#img1,#img2,#img3 {
+	width: 120px;
+	height: 160px;
+	transition: width 2s, height 2s;
+}
+img#img1:hover {
+	width: 150px;
+	height: 200px;
+}
+li {
+	position: absolute;
+	list-style: none;
+	float: left;
+	margin-left: 10px;
+	border: 1px solid #D0D0D0;
+}
+li#xuanLi0 {
+	top: 400px;
+	left: 240px;
+}
+li#xuanLi1 {
+	top: 280px;
+	left: 30px;
+}
+li#xuanLi2 {
+	top: 120px;
+	left: 240px;
+}
+li#xuanLi3 {
+	top: 280px;
+	left: 450px;
+}
