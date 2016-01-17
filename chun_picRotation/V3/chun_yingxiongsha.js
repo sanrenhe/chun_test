@@ -28,12 +28,11 @@ function loadjscssfile(filename, filetype){
 
 function yingxiongsha(){
 	this.pic_src = [
-					"http://i.mmcdn.cn/simba/img/T117eTXmXqXXXXXXXX.jpg",
-					"http://img03.taobaocdn.com/tps/i3/T1t8eTXbBtXXXXXXXX-490-170.png",
-					"http://i.mmcdn.cn/simba/img/T1OVOUXeNjXXXXXXXX.jpg",
-					"http://i.mmcdn.cn/simba/img/T1J.9TXc8lXXXXXXXX.jpg",
-					"http://i.mmcdn.cn/simba/img/T117eTXmXqXXXXXXXX.jpg",
-					"http://img03.taobaocdn.com/tps/i3/T1t8eTXbBtXXXXXXXX-490-170.png",
+					"./images/0.jpg",
+					"./images/1.jpg",
+					"./images/2.jpg",
+					"./images/3.jpg",
+					"./images/4.jpg",
 					];
 	this.j = 0;
 	this.count = 0;
@@ -58,21 +57,61 @@ yingxiongsha.prototype = {
 
 		for(var i=0; i<that.pic_src.length; i++){
 			var pic_Li = document.createElement('li');
-			pic_Li.id = 'li' + i;
+			pic_Li.id = 'li_' + i;
 			pic_Ul.appendChild(pic_Li);
 			var pic_Img = document.createElement('img');
-			pic_Img.id = 'img' + i;
+			pic_Img.id = 'img_' + i;
 			pic_Img.src = that.pic_src[i];
 			pic_Li.appendChild(pic_Img);
 		};
-
-
-
-
-
+		that.time = window.setInterval(function(){
+			that.yingxiongsha();
+		},4000);
+		return that;
+	},
+	yingxiongsha : function(){
+		var that = this;
+		var $img = new Array,
+			$li = new Array;
+		for(var i=0; i<that.pic_src.length; i++){
+			$img[i] = document.getElementById('img_' + i);
+			$li[i] = document.getElementById('li_' + i);
+		};
+		$li[2].setAttribute("style","transition-duration: 2000ms;transform: translate3d(-130px,10px,0px);");
+		$img[2].setAttribute("style","transition: width 2s, height 2s; height: 180px; width: 130px");
+		$li[1].setAttribute("style","transition-duration: 2000ms;transform: translate3d(-100px,20px,0px);");
+		$img[1].setAttribute("style","transition: width 2s, height 2s; height: 150px; width: 100px");
+		$li[3].setAttribute("style","transition-duration: 2000ms;transform: translate3d(-150px,-10px,0px);");
+		$img[3].setAttribute("style","transition: width 2s, height 2s; height: 200px; width: 150px");
+		$li[4].setAttribute("style","transition-duration: 2000ms;transform: translate3d(-130px,-20px,0px)");
+		$img[4].setAttribute("style","transition: width 2s, height 2s; height:180px; width:130px;");
+		$li[0].setAttribute("style","transition-duration: 1000ms;transform: translate3d(510px,0px,0px)");
+		
+		window.setTimeout(function(){
+			for(var i=0; i<that.pic_src.length; i++){
+				$img[i].removeAttribute("style");
+				$li[i].removeAttribute("style");
+			}
+			// that.Huan($img,$li);
+		},2000);
 
 		return that;
-	}
+	},
+	Huan : function($img,$li){
+		var that = this;
+		console.log("chun");
+		for(var i=0; i<that.pic_src.length; i++){
+			var j = $img[i].id.split("_")[1];
+			if(parseInt(j)>0){
+				$img[i].id = "img_" + (parseInt(j)-1);
+				$li[i].id = "li_" + (parseInt(j)-1);
+			}else{
+				$img[i].id = "img_4";
+				$li[i].id = "li_4";
+			}
+		};
+		return that;
+	},
 };
 
 var pic = new yingxiongsha();

@@ -3,7 +3,7 @@ div#picViewDiv {
 	left: 10%;
 	top:50%;
 	width: 800px;
-	height: 600px;
+	height: 400px;
 	border: 1px solid black;
 	overflow: hidden;
 }
@@ -11,11 +11,50 @@ ul#picUl {
 	padding-top: 100px;
 	width: 800px;
 }
-li,img {
+li {
+	position: relative;
 	float: left;
 	list-style: none;
-	left: 0px;
-	width: 100px;
-	height: 200px;
-	border: 1px solid grey;
+
 }
+li#li_0,#li_4 {
+	top: 30px;
+	left: 30px;
+	width: 100px;
+	height: 150px;
+}
+li#li_1,#li_3 {
+	top: 10px;
+	left: 30px;
+	width: 130px;
+	height: 180px;
+}
+li#li_2 {
+	left: 30px;
+	width: 150px;
+	height: 200px;
+}
+img#img_0,#img_4 {
+	width: 100px;
+	height: 150px;
+}
+img#img_1,#img_3 {
+	width: 130px;
+	height: 180px;
+}
+img#img_2 {
+	width: 150px;
+	height: 200px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
