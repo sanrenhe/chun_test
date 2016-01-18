@@ -12,27 +12,44 @@ ul#picUl {
 	width: 800px;
 }
 li {
-	position: relative;
+	position: absolute;
 	float: left;
 	list-style: none;
-
+	
 }
-li#li_0,#li_4 {
-	top: 30px;
-	left: 30px;
+li#li_0 {
+	left: 50px;
+	top: 150px;
 	width: 100px;
 	height: 150px;
+	z-index: -1;
 }
-li#li_1,#li_3 {
-	top: 10px;
-	left: 30px;
+li#li_1 {
+	left: 152px;
+	top: 134px;
 	width: 130px;
 	height: 180px;
 }
 li#li_2 {
-	left: 30px;
+	top: 122px;
+	left: 284px;
 	width: 150px;
 	height: 200px;
+}
+li#li_3 {
+	left: 436px;
+	top: 134px;
+	width: 130px;
+	height: 180px;
+}
+li#li_4 {
+	left: 568px;
+	top: 150px;
+	width: 100px;
+	height: 150px;
+}
+img {
+	border: 1px solid black;
 }
 img#img_0,#img_4 {
 	width: 100px;
