@@ -7,22 +7,22 @@ div#picViewDiv {
 	border: 1px solid black;
 	overflow: hidden;
 }
+div#cssDiv {
+	clear:both;
+}
 ul#picUl {
-	padding-top: 100px;
-	width: 800px;
+	border:1px solid black;
 }
 li {
 	position: absolute;
 	float: left;
 	list-style: none;
-	
 }
 li#li_0 {
 	left: 50px;
 	top: 150px;
 	width: 100px;
 	height: 150px;
-	z-index: -1;
 }
 li#li_1 {
 	left: 152px;
