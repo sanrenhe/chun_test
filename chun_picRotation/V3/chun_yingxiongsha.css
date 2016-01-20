@@ -49,6 +49,7 @@ li#li_4 {
 	height: 150px;
 }
 img {
+	cursor:pointer;
 	border: 1px solid black;
 }
 img#img_0,#img_4 {

@@ -99,16 +99,18 @@ yingxiongsha.prototype = {
 		that.createView(that);
 		return that;
 	},
+	// 创建显示框架
 	createView : function(){
 		var that = this;
+		// div
 		var picViewDiv = document.createElement("div");
 		picViewDiv.id = "picViewDiv";
 		document.body.appendChild(picViewDiv);
-
+		// div-ul
 		var pic_Ul = document.createElement('ul');
 		pic_Ul.id = 'picUl';
 		picViewDiv.appendChild(pic_Ul);
-
+		// div-ul-li-img
 		for(var i=0; i<that.pic_src.length; i++){
 			var pic_Li = document.createElement('li');
 			pic_Li.id = 'li_' + i;
@@ -118,22 +120,25 @@ yingxiongsha.prototype = {
 			pic_Img.src = that.pic_src[i];
 			pic_Li.appendChild(pic_Img);
 		};
-
+		// 间隔调用图片循环
 		that.time = window.setInterval(function(){
 			that.yxs(1);
-			console.log("start");
 		},2000);
+		// 鼠标移入移出功能
 		that.overOrOut();
 		return that;
 	},
+	// 图片循环开始
 	yxs : function(circleFlag){
 		var that = this;
+		// li、img标签数组
 		var $img = new Array,
 			$li = new Array;
 		for(var i=0; i<that.pic_src.length; i++){
 			$img[i] = document.getElementById('img_' + i);
 			$li[i] = document.getElementById('li_' + i);
 		};
+		// 判断传入标志值：-2：点击最左边图片；-1：点击次左边图片；1：点击次右边图片；2：点击最右边图片
 		switch(circleFlag){
 			case -2:
 			that.Counter_clockwise_Left($li,$img)
@@ -152,9 +157,11 @@ yingxiongsha.prototype = {
 		}
 		return that;
 	},
+	// 顺时针循环
 	Clockwise : function($li,$img){
 		var that = this;
 		$li[0].setAttribute("style",that.li_trans[0]);
+		$img[0].setAttribute("style",that.img_trans[0]);
 
 		$li[1].setAttribute("style",that.li_trans[1]);
 		$img[1].setAttribute("style",that.img_trans[1]);
@@ -173,11 +180,11 @@ yingxiongsha.prototype = {
 				$img[i].removeAttribute("style");
 				$li[i].removeAttribute("style");
 			}
-			// debugger;
 			that.Clockwise_Huan($li,$img);
 		},1000);
 		return that;
 	},
+	// 顺时针循环完成后，标签id变化
 	Clockwise_Huan : function($li,$img){
 		var that = this;
 		for(var i=0; i<that.pic_src.length; i++){
@@ -192,33 +199,34 @@ yingxiongsha.prototype = {
 		};
 		return that;
 	},
+	// 顺时针循环2，即点击最右侧图片
 	Clockwise_Right : function($li,$img){
 		var that = this;
 		$li[0].setAttribute("style",that.li_trans_R[0]);
 		$img[0].setAttribute("style",that.img_trans_R[0]);
-		// debugger;
+
 		$li[1].setAttribute("style",that.li_trans_R[1]);
 		$img[1].setAttribute("style",that.img_trans_R[1]);
-		// debugger;
+
 		$li[2].setAttribute("style",that.li_trans_R[2]);
 		$img[2].setAttribute("style",that.img_trans_R[2]);
-		// debugger;
+
 		$li[3].setAttribute("style",that.li_trans_R[3]);
 		$img[3].setAttribute("style",that.img_trans_R[3]);
-		// debugger;
+
 		$li[4].setAttribute("style",that.li_trans_R[4]);
 		$img[4].setAttribute("style",that.img_trans_R[4]);
-		// debugger;
+
 		window.setTimeout(function(){
 			for(var i=0; i<that.pic_src.length; i++){
 				$img[i].removeAttribute("style");
 				$li[i].removeAttribute("style");
 			}
-			// debugger;
 			that.Clockwise_Right_Huan($li,$img);
 		},1000);
 		return that;
 	},
+	// 顺时针循环2完成后，标签id变换
 	Clockwise_Right_Huan : function($li,$img){
 		var that = this;
 		for(var i=0; i<that.pic_src.length; i++){
@@ -233,6 +241,7 @@ yingxiongsha.prototype = {
 		};
 		return that;
 	},
+	// 逆时针循环，即点击次左边图片
 	Counter_clockwise : function($li,$img){
 		var that = this;
 		$li[4].setAttribute("style",that.li_trans_Ni[4]);
@@ -255,12 +264,12 @@ yingxiongsha.prototype = {
 				$img[i].removeAttribute("style");
 				$li[i].removeAttribute("style");
 			}
-			// debugger;
 			that.Counter_Huan($li,$img);
 		},1000);
 
 		return that;
 	},
+	// 逆时针循环完成后，标签id变换
 	Counter_Huan : function($li,$img){
 		var that = this;
 		for(var i=that.pic_src.length-1; i>=0; i--){
@@ -275,33 +284,34 @@ yingxiongsha.prototype = {
 		};
 		return that;
 	},
+	// 逆时针循环2，即点击最左侧图片
 	Counter_clockwise_Left : function($li,$img){
 		var that = this;
 		$li[4].setAttribute("style",that.li_trans_L[4]);
 		$img[4].setAttribute("style",that.img_trans_L[4]);
-		// debugger;
+
 		$li[3].setAttribute("style",that.li_trans_L[3]);
 		$img[3].setAttribute("style",that.img_trans_L[3]);
-		// debugger;
+
 		$li[2].setAttribute("style",that.li_trans_L[2]);
 		$img[2].setAttribute("style",that.img_trans_L[2]);
-		// debugger;
+
 		$li[1].setAttribute("style",that.li_trans_L[1]);
 		$img[1].setAttribute("style",that.img_trans_L[1]);
-		// debugger;
+
 		$li[0].setAttribute("style",that.li_trans_L[0]);
 		$img[0].setAttribute("style",that.img_trans_L[0]);
-		// debugger;
+
 		window.setTimeout(function(){
 			for(var i=0; i<that.pic_src.length; i++){
 				$img[i].removeAttribute("style");
 				$li[i].removeAttribute("style");
 			}
-			// debugger;
 			that.Counter_Left_Huan($li,$img);
 		},1000);
 		return that;
 	},
+	// 逆时针循环2完成后,标签id变换
 	Counter_Left_Huan : function($li,$img){
 		var that = this;
 		for(var i=0; i<that.pic_src.length; i++){
@@ -316,33 +326,33 @@ yingxiongsha.prototype = {
 		};
 		return that;
 	},
+	// 鼠标移入移除效果
 	overOrOut : function(){
 		var that = this;
 		var $ul = document.getElementById("picUl");
+		// 鼠标移入，图片停止轮播
 		$ul.addEventListener('mouseover', overOn, false);
 		function overOn(){
-			// console.log('over');
 			window.clearInterval(that.time);
 		};
+		// 鼠标移出，图片轮播
 		$ul.addEventListener('mouseout', outOn, false);
 		function outOn(){
-			// console.log('out');
 			that.time = window.setInterval(function(){
 				that.yxs(1);
-				console.log("mouseout");
-				// debugger;
 			},2000);
 		};
+		// 鼠标点击
 		that.liClick($ul);
 		return that;
 	},
+	// 鼠标点击
 	liClick : function($ul,$li,$img){
 		var that = this;
 		var ulLi = $ul.getElementsByTagName('li');
 		$ul.addEventListener('click', mouseClick, false);
 		function mouseClick(e){
 			if(e.target.tagName.toLowerCase() != 'ul' && e.target.tagName.toLowerCase() != 'li'){
-				console.log(e.target.tagName);
 				that.imgClick(e.target);
 			}else{
 				return false;
@@ -350,11 +360,12 @@ yingxiongsha.prototype = {
 		};
 		return that;
 	},
+	// 点击图片
 	imgClick : function(clickimg){
 		var that = this;
 		var idNum = clickimg.id.split("_")[1];
 		var dis = idNum - 2;
-		console.log(dis);
+		// -2：点击最左侧；-1：点击次左侧；0：点击中间；1：点击次右侧；2：点击最右侧；
 		switch(dis){
 			case 1:
 			that.click_Right();
@@ -375,15 +386,19 @@ yingxiongsha.prototype = {
 		}
 		return that;
 	},
+	// 点击次右侧
 	click_Right : function(){
 		this.yxs(1);
 	},
+	// 点击最右侧
 	clcik_Right_R : function(){
 		this.yxs(2);
 	},
+	// 点击次左侧
 	click_Left : function(){
 		this.yxs(-1);
 	},
+	// 点击最左侧
 	click_Left_L : function(){
 		this.yxs(-2);
 	},
