@@ -7,14 +7,15 @@
 window.onload = function(){
 	var pic = new picXuan();
 	pic.init();
+	console.log(document.body.scrollHeiht);
 };
 
 function picXuan(){
 	this.pic_src = [
-					"http://i.mmcdn.cn/simba/img/T117eTXmXqXXXXXXXX.jpg",
-					"http://img03.taobaocdn.com/tps/i3/T1t8eTXbBtXXXXXXXX-490-170.png",
-					"http://i.mmcdn.cn/simba/img/T1OVOUXeNjXXXXXXXX.jpg",
-					"http://i.mmcdn.cn/simba/img/T1J.9TXc8lXXXXXXXX.jpg",
+					"./images/0.jpg",
+					"./images/1.jpg",
+					"./images/2.jpg",
+					"./images/3.jpg"
 					];
 	this.j = 0;
 	this.count = 0;
@@ -83,7 +84,7 @@ picXuan.prototype = {
 	},
 	Huan : function($img, $xuanLi){
 		var that = this;
-		console.log("chun");
+		// console.log("chun");
 		for(var i=0; i<that.pic_src.length; i++){
 			if(i<3){
 				$img[i].id = "img" + (i+1);
