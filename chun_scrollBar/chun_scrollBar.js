@@ -55,28 +55,37 @@ scrollBar.prototype = {
 		barDivUl.style.cursor = 'pointer';
 		barDiv.appendChild(barDivUl);
 
+		var start=distance=end=0;
 		barDivUl.addEventListener("mousedown", put, false);
-		
 		function put(e){
-			console.log(e.pageY);
-			var start = e.pageY;
-			var distance = 0;
-			var end = 0;
+			e.stopPropagation();
+			document.body.setAttribute("style","user-select: none; -o-user-select: none; -moz-user-select: none; -khtml-user-select: none; -webkit-user-select: none;");
+			start = e.pageY;
+			document.body.addEventListener("mousemove", move, false);
 			barDivUl.addEventListener("mousemove", move, false);
 			function move(evt){
+				evt.stopPropagation();
 				end = evt.pageY;
-				if(end > barDivUl.offsetHeight*0.5){
-					barDivUl.style.top = end-40 + 'px';
-				}
-				document.body.addEventListener("mouseup", up, false);
-				function up(e){
-					console.log("up");
-					barDivUl.removeEventListener("mousemove", move, false);
-					barDivUl.style.top = e.pageY-40 + 'px';
-					distance = 0;
-					end = 0;
-				}
+				var startTop = parseInt(barDivUl.style.top);
+				distance = end - startTop;
+				barDivUl.style.top = end-40 + 'px';
+				console.log("move");
 			};
+			document.body.addEventListener("mouseup", up, false);
+			barDivUl.addEventListener("mouseup", up, false);
+			function up(e){
+				e.stopPropagation();
+				barDivUl.style.top = e.pageY-40 + 'px';
+				document.body.removeEventListener("mousemove", move, false);
+				barDivUl.removeEventListener("mousemove", move, false);
+				document.body.setAttribute("style","");
+
+				// barDivUl.removeEventListener("mousedown", put, false);
+				// barDivUl.style.top = e.pageY-40 + 'px';
+				console.log("up");
+			};
+			document.body.addEventListener("mouseup", up, false);
+			console.log("down");
 			
 			// debugger;
 		};
