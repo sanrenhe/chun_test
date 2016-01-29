@@ -37,54 +37,66 @@ function scrollBar(){
 scrollBar.prototype = {
 	init : function(){
 		var that = this;
+		
 		that.$viewport.style.height = '500px';
 		that.$viewport.style.overflow = 'hidden';
 		that.$viewport.style.margin = '0px';
+
 		that.createBar();
+
 		return that;
 	},
 	createBar : function(){
 		var that = this;
+		// 创建滚动条框
 		var $scrollBarBody = document.createElement('div');
 		$scrollBarBody.id = 'scrollBar';
 		$scrollBarBody.style.left = that.$viewport.offsetWidth-20 + 'px';
 		$scrollBarBody.style.height = that.$viewport.offsetHeight + 'px';
 		that.$scrollBar1.appendChild($scrollBarBody);
-
+		// 创建滚动条
 		var $track = document.createElement('div');
 		$track.id = 'track';
+		$track.style.top = '1px';
 		$track.style.height = that.$viewport.offsetHeight*0.2 + 'px';
 		$scrollBarBody.appendChild($track);
 
-		var start=distance=end=0;
+		that.scrollEvent($track,$scrollBarBody);
+
+		return that;
+	},
+	scrollEvent : function($track,$scrollBarBody){
+		var that = this;
+
 		$track.addEventListener("mousedown", put, false);
 		function put(e){
-			e.stopPropagation();
 			that.shakeFlag = true;
+			// .noSelect文本不能选中
 			that.$body.className = "noSelect";
-			start = e.pageY;
+
 			that.$body.addEventListener("mousemove", move, false);
 			$track.addEventListener("mousemove", move, false);
-			function move(evt){
+			function move(event){
 				if(that.shakeFlag){
-					evt.stopPropagation();
-					end = evt.pageY;
-					var startTop = parseInt($track.style.top);
-					distance = end - startTop;
-					$track.style.top = end-40 + 'px';
-					that.$overview.style.top = -parseInt($track.style.top) + "px";
-					console.log(that.$overview.style.top);
-				}
+					var slidingPost = event.pageY - 40,
+						slidingDistance = parseInt($scrollBarBody.style.height) - parseInt($track.style.height);
+					if(slidingPost>0 && slidingPost<slidingDistance){
+						// 滚动条位置变换
+						$track.style.top = slidingPost + 'px';
+						// 文本位置变换
+						that.$overview.style.top = -parseInt($track.style.top)*((that.$overview.offsetHeight-that.$viewport.offsetHeight+40)/slidingDistance) + "px";
+					};
+				};
 			};
-			that.$body.addEventListener("mouseup", up, false);
+
+			window.addEventListener("mouseup", up, false);
 			$track.addEventListener("mouseup", up, false);
 			function up(e){
-				e.stopPropagation();
 				that.shakeFlag = false;
 				that.$body.className = "";
 			};
-			console.log("down");
 		};
+
 		return that;
 	},
 };
@@ -92,7 +104,6 @@ scrollBar.prototype = {
 var sBar = new scrollBar();
 sBar.init();
 loadjscssfile('chun_scrollBar.css','css');
-
 
 
 
