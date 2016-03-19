@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <title>图片载入进度条！</title>
+    <style type="text/css">
+    body {
+        height: 100%;
+        --webkit-tap-highlight-color: transparent;
+    }
+    
+    .container,
+    .page,
+    .shade {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+    
+    .page {
+        display: none;
+        -webkit-transition: -webkit-transform .4s ease;
+        transition: transform .4s ease;
+        --webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+    }
+    
+    .page.page--active,
+    .page.page--prev,
+    .page.page--next {
+        display: block;
+    }
+    
+    .page.page--next,
+    .page.page--active.page--active-right {
+        --webkit-transform: translate3d(100%, 0, 0);
+        transform: translate3d(100%, 0, 0);
+    }
+    
+    .page.page--prev,
+    .page.page--active.page--active-left {
+        --webkit-transform: translate3d(-100%, 0, 0);
+        transform: translate3d(-100%, 0, 0);
+    }
+    
+    .page.page--next.page--next-left,
+    .page.page--prev.page--prev-right,
+    .page.page--active {
+        --webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+    
+    .jindutiao {
+        position: absolute;
+        top: 45%;
+        left: 25%;
+        width: 50%;
+        height: 5%;
+        background-color: black;
+        border-radius: 25px;
+        overflow: hidden;
+        z-index: -2;
+    }
+    
+    .tiao {
+        position: absolute;
+        top: -5%;
+        left: -5%;
+        height: 150%;
+        background-color: green;
+        border-radius: 25px;
+        border: 2px solid green;
+        z-index: -1
+    }
+    
+    .page__jump {
+        position: absolute;
+        width: 100%;
+        height: 3%;
+        background-color: white;
+    }
+    
+    .btn-next {
+        position: absolute;
+        right: 0px;
+        font-size: 40px;
+    }
+    
+    .btn-prev {
+        position: absolute;
+        left: 0px;
+        font-size: 40px;
+    }
+    
+    a {
+        text-decoration: none;
+    }
+    .jindutiao p{
+    	font-size:400%;
+    	color:white;
+    	margin-top: 2%;
+    	text-align: center;
+
+    }
+    .shade{
+    	background-color: grey;
+    	z-index:-3
+    }
+    .none{
+    	display:none;
+    }
+    </style>
+</head>
+
+<body>
+    <!--     <div id="slider0">
+        <div id="scroller0">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div> -->
+    <div id="shade" class="shade">
+        <div class="jindutiao">
+            <div class="tiao"></div>
+            <p id="tencent">0%</p>
+        </div>
+    </div>
+    <div id="container" class="container none">
+        <section id="page-1" class="page page--1" style="background-color: red;">
+            <div class="page__jump"><a href="javascript:;" class="btn-next">下一页</a></div>
+            <p class="page__num animated">1</p>
+        </section>
+        <section id="page-2" class="page page--2" style="background-color: blue;">
+            <div class="page__jump"><a href="javascript:;" class="btn-prev">上一页</a>
+                <a href="javascript:;" class="btn-next">下一页</a></div>
+            <p class="page__num animated">2</p>
+        </section>
+        <section id="page-3" class="page page--3" style="background-color: green;">
+            <div class="page__jump"><a href="javascript:;" class="btn-prev">上一页</a></div>
+            <p class="page__num animated">3</p>
+        </section>
+    </div>
+    <script type="text/javascript" src="./sea.js"></script>
+    <script type="text/javascript">
+    seajs.use("./template0.js");
+    </script>
+</body>
+
+</html>

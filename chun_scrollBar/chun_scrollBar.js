@@ -43,6 +43,7 @@ scrollBar.prototype = {
 		that.$viewport.style.margin = '0px';
 
 		that.createBar();
+		that.zan(4);
 
 		return that;
 	},
@@ -99,11 +100,27 @@ scrollBar.prototype = {
 
 		return that;
 	},
+	zan : function getRating(rating) {
+		var that = this;
+	    if(rating > 5 || rating < 0) throw new Error('数字不在范围内');
+	    alert('★★★★★☆☆☆☆☆'.substring(5 - rating, 10 - rating ));
+		return that;
+	},
+
 };
 
 var sBar = new scrollBar();
 sBar.init();
 loadjscssfile('chun_scrollBar.css','css');
+var stateString = "resolved";
+if(stateString){
+	console.log("chun");
+}
+var div = document.createElement('div');
+div.setAttribute('style','width: calc(100% / 3 - (15px * 2) / 3)');
+console.log(div.style.width);
+
+
 
 
 

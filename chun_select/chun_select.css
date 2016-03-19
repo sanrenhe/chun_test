@@ -1,0 +1,35 @@
+#selectContainer{
+	width: 200px;
+	height: 20px;
+	display: inline-block;
+	position: relative;
+	cursor: pointer;
+	text-align: left;
+	border:1px solid #DDD;
+	background: #fafafa;
+
+}
+.chun_selectContent{
+	width: 80%;
+	height: 100%;
+	cursor: pointer;
+	overflow: hidden;
+}
+.chun_selectIcon{
+	position: absolute;
+	top: -10%;
+	width: 20%;
+	height: 100%;
+	display: block;
+	cursor: pointer;
+	overflow: hidden;
+	right: -10px;
+}
+.up{
+	width: 33px;
+	height: 21.5px;
+	background-image: url(icon.png);
+	background-repeat: no;
+	background-position: -5px 0px;
+	
+}

@@ -22,6 +22,7 @@ div#track {
 	width: 16px;
 }
 div#overview {
+	width: calc(100% / 3 - (15px * 2) / 3);
 	position: relative;
 }
 .noSelect {
