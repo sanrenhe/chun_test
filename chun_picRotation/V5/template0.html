@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <title>图片滑动</title>
+    <style type="text/css">
+    div {
+        position: absolute;
+        overflow: hidden;
+    }
+    
+    .box {
+        width: 100%;
+        height: 100%;
+        background-color: grey;
+    }
+    
+    .top {
+        height: 20%;
+        width: 1000px;
+        background-color: black;
+        overflow-x: auto;
+    }
+    
+    .top ul {
+        height: 100%;
+        width: 2100px;
+        list-style: none;
+        overflow: hidden;
+        padding: 0px;
+        margin: 0px;
+    }
+    
+    .top li {
+        width: 300px;
+        height: 280px;
+        float: left;
+        background-color: red;
+        margin: 20px;
+        font-size: 200px;
+    }
+    
+    .picRotation {
+        width: 780px;
+        height: 60%;
+        background-color: blue;
+        top: 30%;
+        left: 10%;
+        overflow: hidden;
+    }
+    
+    span {
+        position: absolute;
+        font-size: 100px;
+        top: 55%;
+    }
+    
+    .left {
+        left: 4%;
+    }
+    
+    .right {
+        right: 4%;
+    }
+    
+    .picRotation ul {
+        height: 100%;
+        list-style: none;
+        overflow: hidden;
+        padding: 0px;
+        margin: 0px;
+    }
+    
+    .picRotation li {
+        width: 780px;
+        height: 100%;
+        float: left;
+        background-color: yellow;
+        font-size: 200px;
+    }
+    
+    .d-cur {
+        border: 10px solid white;
+    }
+    
+    .none {
+        display: none;
+    }
+    
+    .info {
+        width: 200px;
+        height: 120px;
+        top: 92%;
+        left: 40%;
+    }
+    
+    p {
+        font-size: 50px;
+        margin: 0px;
+        text-align: center;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div id="container" style="overflow: hidden;position: relative;width: auto!important;height: 100%;">
+            <div class="picRotation" id="wrapper">
+                <ul>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                    <li>5</li>
+                    <li>6</li>
+                </ul>
+            </div>
+            <div class="top">
+                <ul id="numList">
+                    <li class="d-cur" data-info="地下一层">1</li>
+                    <li data-info="地下一层">2</li>
+                    <li data-info="地下一层">3</li>
+                    <li data-info="地下二层">4</li>
+                    <li data-info="地下二层">5</li>
+                    <li data-info="地下二层">6</li>
+                </ul>
+            </div>
+            <span class="left none"><</span>
+            <span class="right">></span>
+        </div>
+        <div class="info">
+            <p id="info_louceng">
+                地下一层
+            </p>
+            <p id="info_num">
+                1/6
+            </p>
+        </div>
+    </div>
+    <script type="text/javascript" src="../../js/sea.js"></script>
+    <script type="text/javascript">
+    seajs.use("./template0.js")
+    </script>
+</body>
+
+</html>
