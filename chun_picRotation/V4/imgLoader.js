@@ -15,18 +15,18 @@ define(function(require, exports, module){
 
 		if(!total){
 			return callback && callback(1);
-		};
+		}
 
 		for(var i=0; i<total; i++ ){
 			imgages[i] = new Image();
 			imgages[i].onload = imgages[i].onerror = _on;
 			imgages[i].src = imgList[i];
-		};
+		}
 
 		setTimeout(function(){
 			loaded < total && (loaded = total, callback && callback(loaded/total));
 		}, timeout*total);
-	};
+	}
 	function isArray(obj){
 		return Object.prototype.toString.call(obj) === '[object Array]';
 	}

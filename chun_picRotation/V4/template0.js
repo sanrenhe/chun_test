@@ -5,22 +5,22 @@ define(function(require, exports, modules) {
     $("document").ready(function() {
         var $activePage = $("#page-1");
         $activePage.addClass("page--active");
-    })
+    });
 
 
     $("section").on("swipeLeft", function(e) {
         slideLeft($(this));
-    })
+    });
     $("section").on("swipeRight", function() {
         slideRight($(this));
-    })
+    });
 
     $(".btn-next").on("click", function() {
         slideLeft($(this).parent().parent());
-    })
+    });
     $(".btn-prev").on("click", function() {
         slideRight($(this).parent().parent());
-    })
+    });
 
     function slideLeft(section) {
         var index = parseInt(section.attr('id').split('-')[1]),
@@ -28,7 +28,7 @@ define(function(require, exports, modules) {
             $nextPage = index == con_Length ? "" : $('#page-' + (index + 1));
         if (index == con_Length) {
             return false;
-        };
+        }
         $nextPage.addClass("page--next");
         setTimeout(function() {
             section.addClass("page--active-left");
@@ -43,11 +43,10 @@ define(function(require, exports, modules) {
 
     function slideRight(section) {
         var index = parseInt(section.attr('id').split('-')[1]),
-            con_Length = $(".container>section").length,
             $prevPage = index == 1 ? "" : $('#page-' + (index - 1));
         if (index == 1) {
             return false;
-        };
+        }
         $prevPage.addClass("page--prev");
         setTimeout(
             function() {
@@ -84,7 +83,7 @@ define(function(require, exports, modules) {
                         },
                         500
                     );
-                };
+                }
                 callbacks[i + 1] && callbacks[i + 1]();
                 i++;
             }, 600);
@@ -92,5 +91,5 @@ define(function(require, exports, modules) {
         if (percentage == 1) {
             callbacks[0]();
         }
-    })
-})
+    });
+});

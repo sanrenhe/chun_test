@@ -5,10 +5,10 @@
  * @date 2016/1/15
  */
 function loadjscssfile(filename, filetype) {
-    if (filename == '' || filetype == '') {
+    if (filename === '' || filetype === '') {
         console.log('引入错误！');
         return false;
-    };
+    }
     if (filetype == 'js') {
         var fileScript = document.createElement('script');
         fileScript.setAttribute('type', 'text/javascript');
@@ -23,12 +23,12 @@ function loadjscssfile(filename, filetype) {
     } else {
         console.log('无效引入');
         return false;
-    };
-};
+    }
+}
 
 function yingxiongsha() {
     this.pic_src = [
-		"./images/0.jpg",
+        "./images/0.jpg",
         "./images/1.jpg",
         "./images/2.jpg",
         "./images/3.jpg",
@@ -100,7 +100,7 @@ function yingxiongsha() {
         "transition: width 0.5s, height 0.5s; height: 180px; width: 130px;",
     ];
     this.time = null;
-};
+}
 
 yingxiongsha.prototype = {
     init: function() {
@@ -143,7 +143,7 @@ yingxiongsha.prototype = {
             var infoDiv_p = document.createElement('p');
             infoDiv_p.innerHTML = that.content_info[i];
             infoDiv.appendChild(infoDiv_p);
-        };
+        }
         // 间隔调用图片循环
         that.time = window.setInterval(function() {
             // console.log(document.getElementById("infoDiv_2").offsetHeight,document.getElementById("li_2").offsetHeight);
@@ -157,15 +157,15 @@ yingxiongsha.prototype = {
     yxs: function(circleFlag) {
         var that = this;
         // li、img标签数组
-        var $img = new Array,
-            $li = new Array,
-            $info = new Array;
+        var $img = [],
+            $li = [],
+            $info = [];
         for (var i = 0; i < that.pic_src.length; i++) {
             $img[i] = document.getElementById('img_' + i);
             $li[i] = document.getElementById('li_' + i);
             $info[i] = document.getElementById('infoDiv_' + i);
             $info[i].style.display = "none";
-        };
+        }
         // 判断传入标志值：-2：点击最左边图片；-1：点击次左边图片；1：点击次右边图片；2：点击最右边图片
         switch (circleFlag) {
             case -2:
@@ -204,8 +204,8 @@ yingxiongsha.prototype = {
         $img[4].setAttribute("style", that.img_trans[4]);
 
         // for(var i=0; i<that.pic_src.length; i++){
-        // 	document.getElementById("infoDiv_" + i).style.top = ($li[i].offsetHeight - document.getElementById("infoDiv_" + i).offsetHeight) + "px";
-        // 	console.log(document.getElementById("infoDiv_" + i).offsetTop);
+        //  document.getElementById("infoDiv_" + i).style.top = ($li[i].offsetHeight - document.getElementById("infoDiv_" + i).offsetHeight) + "px";
+        //  console.log(document.getElementById("infoDiv_" + i).offsetTop);
         // }
 
         window.setTimeout(function() {
@@ -237,7 +237,7 @@ yingxiongsha.prototype = {
             }
             $info[i].style.top = ($img[i].offsetHeight - $info[i].offsetHeight) + "px";
 
-        };
+        }
         return that;
     },
     // 顺时针循环2，即点击最右侧图片
@@ -286,7 +286,7 @@ yingxiongsha.prototype = {
             }
             $info[i].style.top = ($img[i].offsetHeight - $info[i].offsetHeight) + "px";
 
-        };
+        }
         return that;
     },
     // 逆时针循环，即点击次左边图片
@@ -336,7 +336,7 @@ yingxiongsha.prototype = {
             }
             $info[i].style.top = ($img[i].offsetHeight - $info[i].offsetHeight) + "px";
 
-        };
+        }
         return that;
     },
     // 逆时针循环2，即点击最左侧图片
@@ -385,7 +385,7 @@ yingxiongsha.prototype = {
             }
             $info[i].style.top = ($img[i].offsetHeight - $info[i].offsetHeight) + "px";
 
-        };
+        }
         return that;
     },
     // 鼠标移入移除效果
@@ -397,7 +397,7 @@ yingxiongsha.prototype = {
 
         function overOn() {
             window.clearInterval(that.time);
-        };
+        }
         // 鼠标移出，图片轮播
         $ul.addEventListener('mouseout', outOn, false);
 
@@ -405,7 +405,7 @@ yingxiongsha.prototype = {
             that.time = window.setInterval(function() {
                 that.yxs(1);
             }, 2000);
-        };
+        }
         // 鼠标点击
         that.liClick($ul);
         return that;
@@ -413,7 +413,6 @@ yingxiongsha.prototype = {
     // 鼠标点击
     liClick: function($ul, $li, $img) {
         var that = this;
-        var ulLi = $ul.getElementsByTagName('li');
         $ul.addEventListener('click', mouseClick, false);
 
         function mouseClick(e) {
@@ -422,7 +421,7 @@ yingxiongsha.prototype = {
             } else {
                 return false;
             }
-        };
+        }
         return that;
     },
     // 点击图片

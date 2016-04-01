@@ -29,4 +29,4 @@ define(function(require, exports, module) {
         $("#info_louceng").html($(this).data("info"));
         $("#info_num").html($(this).html() + '/' + sum);
     });
-})
+});
