@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="format-detection" content="telephone=no" />
+    <title>摇一摇</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <script type="text/javascript" src="js/index.js"></script>
+</head>
+
+<body>
+    <!-- 摇一摇 -->
+    <div class="d-topmain">
+        <img class="d-imgshow" src="images/d_img_show.jpg" />
+        <div class="d-center">
+            <h3>已有9999人参与摇奖</h3>
+        </div>
+        <div class="d-bottom">
+            <a class="d-shake-btn d-wobble" href="javascript:;" id="shakeBtn"></a>
+            <h4>还有<em id="num">4</em>次摇奖机会 </h4>
+            <a class="d-gobtn" href="javascript:;">分享好友增加摇奖机会哦~</a>
+            <ul class="d-tool">
+                <li><a href="javascript:;">我的奖品</a></li>
+                <li><a href="javascript:;">活动规则</a></li>
+            </ul>
+        </div>
+        <img class="d-people d-bounceInDown d-dwobble" src="images/d_people.png">
+    </div>
+    <!-- 未中奖弹层 -->
+    <div class="d-popup" style="display:none" id="weizhongjiang">
+        <div class="d-popupbox">
+            <img class="d-topimg" src="http://src.house.sina.com.cn/imp/imp/deal/2d/36/9/2a1942e630afc80cfd5452add73_p10_mk10.png" />
+            <div class="d-bottom">
+                <h3>
+					<span class="tiShiTxt">很遗憾，未中奖</span>
+				</h3>
+                <div class="d-btn">
+                    <a href="javascript:;" id="againBtn">再来一次</a>
+                    <a class="sharebtn" href="javascript:;">分享给好友一起中大奖</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 无摇奖次数弹层 -->
+    <div class="d-popup" style="display:none" id="wuyaojiangcishu">
+        <div class="d-popupbox">
+            <img class="d-topimg" src="http://src.house.sina.com.cn/imp/imp/deal/2d/36/9/2a1942e630afc80cfd5452add73_p10_mk10.png" />
+            <div class="d-bottom">
+                <h3>
+					<span class="tiShiTxt">没有摇奖次数啦</span>
+				</h3>
+                <div class="d-btn" id="huoDongJieSu">
+                    <a class="sharebtn" href="javascript:;">
+                        分享好友
+                    </a>
+                    <a href="javascript:location.reload();">返回首页</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 中奖弹层 -->
+    <div class="d-popup" style="display:none" id="zhongjiang">
+        <div class="d-popupbox">
+            <img class="d-topimg-2" id="picZhongjiang" src="http://src.house.sina.com.cn/imp/imp/deal/d0/ea/a/82b3b10c56bb009cda1d4799e2a_p10_mk10.png" />
+            <div class="d-bottom">
+                <h3>
+					<span>恭喜你，获得<br/><em class="tiShiTxt"></em></span>
+				</h3>
+                <div class="d-btn">
+                    <a href="" id="getPrize">立即领奖</a>
+                    <a class="sharebtn" href="javascript:;">分享好友晒奖</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 奖品列表 -->
+    <div class="d-container">
+        <h3 class="d-title">
+			活动奖品
+		</h3>
+        <div class="d-imglist">
+            <ul>
+                <li>
+                    <img src="images/temp/d_210x160.jpg" />
+                    <p>苹果笔记本</p>
+                </li>
+                <li>
+                    <img src="images/temp/d_210x160.jpg" />
+                    <p>苹果笔记本</p>
+                </li>
+                <li>
+                    <img src="images/temp/d_210x160.jpg" />
+                    <p>苹果笔记本</p>
+                </li>
+            </ul>
+        </div>
+        <h3 class="d-title">
+			中奖记录
+			<span>共<b>5</b>人获奖</span>
+		</h3>
+        <ul class="d-plist">
+            <li>
+                <a href="javascript:;">
+                    <figure>
+                        <img src="images/d_tx.png">
+                    </figure>
+                    <div class="d-word">
+                        <h3>乐居网友<span>2015-11-10</span></h3>
+                        <p>获得iPhone6</p>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <figure>
+                        <img src="images/d_tx.png">
+                    </figure>
+                    <div class="d-word">
+                        <h3>乐居网友<span>2015-11-10</span></h3>
+                        <p>获得iPhone6</p>
+                    </div>
+                </a>
+            </li>
+        </ul>
+        <a class="d-more" href="javascript:;"><i></i>加载更多...</a>
+    </div>
+    <!-- 摇一摇声音 -->
+    <audio>
+        <source src="./yaoyiyao.mp3" type="audio/mpeg">
+    </audio>
+    <script type="text/javascript" src="js/zepto.js"></script>
+    <script type="text/javascript" src="js/shake.js"></script>
+</body>
+
+</html>
