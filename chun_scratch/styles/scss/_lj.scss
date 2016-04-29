@@ -1,0 +1,169 @@
+@charset "UTF-8";
+.f_col {color: #e42c4f; border-color: #e42c4f;}
+.f_col_b { background-color: #e42c4f;}
+@mixin bg-gradient($bgtop, $bgbottom){
+	background-image: -ms-linear-gradient(top, $bgtop, $bgbottom);
+	background-image: -moz-linear-gradient(top, $bgtop, $bgbottom);
+	background-image: -webkit-linear-gradient(top, $bgtop, $bgbottom);
+	background-image: -o-linear-gradient(top, $bgtop, $bgbottom);
+	background-image: linear-gradient(to bottom, $bgtop, $bgbottom);
+}
+.l_btn { display: block; height: 34px; line-height: 34px; margin: 0 30px;
+	border-radius: 17px; text-align: center;
+	/*color: #de183a;*/ font-size: 14px; font-weight: bold;
+	@include bg-gradient(#fff, #fcf6d3); background-color: #fdfae5;
+	-webkit-box-shadow: 0 3px 2px rgba(25, 45, 91, .3);
+	box-shadow: 0 3px 2px rgba(25, 45, 91, .3);
+}
+.l_pb20 { padding-bottom: 20px;}
+html, body { height: 100%;}
+
+// --- 活动包络
+.l_top { position: relative; min-width: 320px; height: 100%; @extend %bg01;
+	//.l_top_bg { position: absolute; left: 0; top: 0; display: block; width: 100%;}
+	.l_top_m { position: absolute; left: 0; top: 50%; width: 100%; margin-top: -130px;
+		h4 { -webkit-box-sizing: border-box; box-sizing: border-box; width: 100%; padding: 0 30px; font-size: 12px; color: #fff; text-align: center; line-height: 16px; text-shadow: 0 1px 1px rgba(4, 0, 0, .3); position: absolute; bottom: 265px; left: 0;}
+	}
+	// --- 刮刮卡
+	.l_scratchBox { position: relative; margin: 0 auto; width: 262px; height: 211px; padding: 32px 29px; @extend %l_bg1;
+		.l_star { position: absolute; top: 19px; left: 12px; width: 52px; height: 110px; @extend %l_star; background-size: 52px 110px; z-index: 100;}
+		.l_scratch { z-index: 0; width: 100%; height: 100%; border-radius: 5px; overflow: hidden; position: relative;
+			//canvas { width: 262px; height: 211px;}
+		}
+	}
+	// --- 按钮
+	.l_btnBox { text-align: center; font-size: 0;
+		a { display: inline-block; width: 90px; height: 32px; line-height: 32px; text-align: center; font-size: 15px; color: #fffef9; margin: 0 10px; border-radius: 16px;}
+	}
+	// --- 灰背景、刮刮我有惊喜
+	.l_tip01 { width: 100%; height: 100%; /*@extend %l_tip01;*/ position: absolute; left: 0; top: 0;
+		span { /*position: absolute; top: 78px; left: 50%;*/ margin: 78px auto 0; display: block; width: 194px; height: 45px; line-height: 45px; @extend %l_tipTit; text-align: center; font-size: 24px; font-weight: bold; color: #fefcf1; text-shadow: 1px 1px 2px rgba(156, 156, 156, .3); }
+		// 小标题和按钮
+		&.hasbtn {
+			span { font-size: 15px; margin-top: 62px;}
+			.l_btnBox { padding-top: 9px;}
+		}
+	}
+	// --- 白背景
+	.l_tip02 { -webkit-box-sizing: border-box; box-sizing: border-box; width: 100%; height: 100%; position: absolute; left: 0; top: 0; padding-top: 55px; @include bg-gradient(#fffffd, #fdf7d6); background-color: #fefbe8;
+		h5 { line-height: 32px; text-align: center; font-size: 30px; font-weight: bold;}
+		span { margin: 5px 38px 0; display: block; line-height: 24px; text-align: center; font-size: 18px; color: #797979; }
+		.l_btnBox { padding-top: 15px;}
+	}
+	// --- 底部按钮
+	.l_bar { padding-bottom: 20px; position: absolute; left: 0; bottom: 0; width: 100%;
+		&.l_pt24 { padding-top: 24px; margin-top: -7px;}
+		h4 { -webkit-box-sizing: border-box; box-sizing: border-box; width: 100%; padding: 0 30px 8px; font-size: 12px; color: #fff; text-align: center; line-height: 16px;
+			em { padding: 0 4px; color: #fff33c;}
+		}
+		.l_btn { /*width: 260px;*/ margin: 0 30px 3px;}
+		.l_bar_ul { text-align: center; padding-top: 12px; height: 12px; font-size: 0;
+			li { display: inline-block; height: 12px; line-height: 12px; padding: 0 10px; border-right: 1px solid #8d1924; font-size: 12px;
+				&:last-of-type { border-right: 0;}
+				a { color: #8d1924; font-size: 12px;}
+			}
+		}
+	}
+}
+
+.l_box {
+	header { height: 18px; line-height: 18px; margin: 13px 0; position: relative; font-size: 14px; letter-spacing: 0.075em; border-left: 2px solid; padding-left: 10px;
+		//&:before { content: ''; display: block; position: absolute; left: 0; top: 13px; width: 2px; height: 17px; background-color: #e42c4f;}
+
+		&.l_bt01:after { content: ''; display: block; position: absolute; left: 0; bottom: -13px; right: 0; height: 1px; background-color: #e7e7e7;}
+		.l_right { float: right; padding-right: 15px; letter-spacing: 0; font-size: 12px; color: #666;
+			em { font-weight: bold; padding: 0 1px;}
+		}
+	}
+}
+
+.l_prize { padding: 0 0 5px 13px; -webkit-box-sizing: border-box; box-sizing: border-box; width: 100%; overflow: hidden;}
+.l_prizeList { width: 3000px; font-size: 0;
+	li { float:left;display: inline-block; width: 105px; margin: 2px 10px 2px 2px; border-radius: 1px; box-shadow: inset 0 0 1px #e5e5e5, 0 0 2px 1px #e5e5e5; font-size: 12px; color: #323333;
+		figure { width: 105px; height: 80px; position: relative;
+			&:after { content: ''; display: block; width: 100%; height: 26px; position: absolute; left: 0; bottom: 0; @extend %l_prizebg1;}
+			img { display: block; width: 105px; height: 80px;}
+		}
+		h4 { line-height: 25px; height: 25px; text-align: center;}
+	}
+}
+
+.l_userList {
+	ul { }
+	li { padding-top: 13px;
+		figure { float: left; padding: 0 6px 0 15px;
+			img { width: 36px; height: 36px; border-radius: 18px;}
+		}
+		.l_listMain { overflow: hidden; position: relative; padding: 0 15px 12px 5px; border-bottom: 1px solid #f1f1f1;
+			h4 { line-height: 17px; padding-bottom: 2px; padding-right: 60px; font-size: 12px; color: #999;}
+			p { line-height: 17px; font-size: 12px;}
+			.l_time { position: absolute; right: 15px; top: 4px; font-size: 10px; color: #bfbfbf;}
+		}
+	}
+}
+.l_loading { width: 100%; height: 35px; line-height: 35px; text-align: center; vertical-align: top; font-size: 10px; color: #aaaaaa;
+	&:before { content: ''; display: inline-block; width: 15px; height: 15px; margin: 10px 5px 0 0; @extend %l_loading; vertical-align: top;}
+}
+
+// --- 2015-12-24引导登陆页
+.l_guide { position: relative; min-width: 320px; height: 100%; @extend %bg02;}
+.l_banner { }
+// dot
+.l_dotBox { padding-top: 10px; text-align: center; font-size: 0;
+	.l_dot { display: inline-block; padding: 0 5px; text-align: center; @include bg-gradient(#13141f, #161622); border-radius: 8px; font-size: 0;
+		i { display: inline-block; vertical-align: top; width: 7px; height: 7px; @extend %l_icon; margin: 4px 5px 5px;
+			&.cur { background-position: -8px 0;}
+		}
+	}
+}
+// banner
+.l_ulBox { $h: 320*1.1; $w: 200*1.1;
+	margin-top: 10px; overflow: hidden; height: ($h+40)+px; padding-bottom: 10px; position: relative;
+	ul { position: absolute; left: 0; top: 0; height: ($h+40)+px; width: 2000px;}
+	li { float: left; margin: 20px 10px; width: ($w)+px; height: ($h)+px; border-radius: 12px; box-shadow: 0 5px 5px rgba(9, 2, 4, .2); overflow: hidden; position: relative;
+		&:after { content: ''; position: absolute; left: 0; bottom: 0; display: block; width: 100%; height: 135px; @extend %l_bannerBg; background-size: 1px 135px;}
+		&.cur { width: ($w*(($h+40)/$h))+px; height: ($h+40)+px; margin: 0 10px;
+			&:after { height: 153px; @extend %l_bannerBg; background-size: 1px 153px;}
+		}
+		img { width: 100%; height: 100%;}
+	}
+}
+// btn
+.l_btnBox { padding-top: 30px;
+	.l_btn { @include bg-gradient(#2da1e1, #15c8b9); background-color: #21b5cc; border-radius: 4px; color: #fff; font-size: 16px; text-shadow: 0.05em 1px 0 #187eaf; margin: 0 47px;}
+}
+@media screen and (max-width: 320px) and (max-height: 500px){ // ip4
+	$h: 320*0.8; $w: 200*0.8;
+	.l_ulBox, .l_ulBox ul { height: ($h+40)+px;}
+	.l_ulBox li { width: ($w)+px; height: ($h)+px;}
+	.l_ulBox li.cur { width: ($w*(($h+40)/$h))+px; height: ($h+40)+px;}
+
+	//.l_dotBox { padding-top: 10px;}
+	//.l_ulBox { margin-top: 10px;}
+	//.l_btnBox { padding-top: 30px;}
+}
+@media screen and (min-width: 321px) and (max-width: 375px){ // ip6
+	$h: 320*1.2; $w: 200*1.2;
+	.l_ulBox, .l_ulBox ul { height: ($h+40)+px;}
+	.l_ulBox li { width: ($w)+px; height: ($h)+px;}
+	.l_ulBox li.cur { width: ($w*(($h+40)/$h))+px; height: ($h+40)+px;}
+
+	//.l_dotBox { padding-top: 10px;}
+	//.l_ulBox { margin-top: 10px;}
+	//.l_btnBox { padding-top: 30px;}
+}
+@media screen and (min-width: 376px){ // ip6p
+	$h: 320*1.4; $w: 200*1.4;
+	.l_ulBox, .l_ulBox ul { height: ($h+40)+px;}
+	.l_ulBox li { width: ($w)+px; height: ($h)+px;}
+	.l_ulBox li.cur { width: ($w*(($h+40)/$h))+px; height: ($h+40)+px;}
+
+	.l_dotBox { padding-top: 20px;}
+	.l_ulBox { margin-top: 20px;}
+	.l_btnBox { padding-top: 40px;}
+}
+
+// --- 2016-3-17 乐居买房app 底部浮层
+.l_ad { display: block; margin: 10px 0;
+	img { display: block; width: 100%;}
+}

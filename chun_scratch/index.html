@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="format-detection" content="telephone=no" />
+    <title>刮一刮</title>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+
+<body>
+    <section class="l_top" style="background-image: url(images/l_bg01.jpg);">
+        <div class="l_top_m">
+            <h4>已有9999人参加刮奖</h4>
+            <div class="l_scratchBox">
+                <div class="l_star"></div>
+                <div class="l_scratch" style="background:#fefbe8">
+                    <div id="realResult">
+                        <input type="hidden" id="enabled" value="0">
+                        <input type="hidden" id="coverText" value="活动已开始">
+                    </div>
+                    <div class="l_tip02 none" id='prize_0'>
+                        <span class='txt'></span>
+                        <div class="l_btnBox">
+                            <a class="f_col_b" href="javascript:location.reload();">再玩一次</a>
+                        </div>
+                    </div>
+                    <div class="l_tip02 none" id='prize_1'>
+                        <h5 class="f_col">中奖啦!</h5>
+                        <span>恭喜获得 <label class='txt'></label></span>
+                        <div class="l_btnBox">
+                            <a class="f_col_b" href="<!--{$my_prize_list_url}-->" id="lingqu">立即领取</a>
+                            <a class="f_col_b" href="javascript:location.reload();">再玩一次</a>
+                        </div>
+                    </div>
+                    <div id='container' class="l_tip01"></div>
+                </div>
+            </div>
+        </div>
+        <div class="l_bar">
+            <h4>还有<em id='times'>3</em>次刮奖机会</h4>
+            <a class="l_btn" href="javascript:;">分享好友一起刮奖</a>
+            <ul class="l_bar_ul">
+                <li><a href="javascript:;">活动规则</a></li>
+                <li><a href="javascript:;">我的奖品</a></li>
+            </ul>
+        </div>
+    </section>
+    <section class="l_box">
+        <header>活动奖品</header>
+        <div class="l_prize">
+            <ul class="l_prizeList">
+                <li>
+                    <figure><img src="images/temp/img1.jpg" alt="" /></figure>
+                    <h4>苹果笔记本</h4>
+                </li>
+                <li>
+                    <figure><img src="images/temp/img1.jpg" alt="" /></figure>
+                    <h4>iPhone6</h4>
+                </li>
+                <li>
+                    <figure><img src="images/temp/img1.jpg" alt="" /></figure>
+                    <h4>苹果笔记本</h4>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <section class="l_box">
+        <header class="l_bt01">中奖纪录
+            <div class="l_right">共<em>5</em>人获奖</div>
+        </header>
+        <div class="l_userList">
+            <ul>
+                <li>
+                    <figure><img src="images/l_face_d.png" alt="" /></figure>
+                    <div class="l_listMain">
+                        <h4>乐居网友</h4>
+                        <p>获得iPhone6</p>
+                        <div class="l_time">2015-11-10</div>
+                    </div>
+                </li>
+                <li>
+                    <figure><img src="images/l_face_d.png" alt="" /></figure>
+                    <div class="l_listMain">
+                        <h4>乐居网友</h4>
+                        <p>获得iPhone6</p>
+                        <div class="l_time">2015-11-10</div>
+                    </div>
+                </li>
+                <li>
+                    <figure><img src="images/l_face_d.png" alt="" /></figure>
+                    <div class="l_listMain">
+                        <h4>乐居网友</h4>
+                        <p>获得iPhone6</p>
+                        <div class="l_time">2015-11-10</div>
+                    </div>
+                </li>
+            </ul>
+            <div class="l_loading">加载更多...</div>
+        </div>
+    </section>
+    <script type="text/javascript" src="js/zepto.js"></script>
+    <script type="text/javascript" src="js/scratch.js"></script>
+</body>
+
+</html>
