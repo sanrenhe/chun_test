@@ -1,6 +1,4 @@
 module.exports = { 
   cookieSecret: 'myblog', 
-  db: 'blog', 
-  host: 'localhost',
-  port: 27017
-}; 
+  url: 'mongodb://chun:199153@aws-us-east-1-portal.22.dblayer.com:10114/blog'
+};

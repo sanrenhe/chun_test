@@ -1,22 +1,6 @@
-var Db = require('./db');
+var mongodb = require('mongodb').MongoClient;
+var settings = require('../settings');
 var markdown = require('markdown').markdown;
-var poolModule = require('generic-pool');
-var pool = poolModule.Pool({
-    name: 'mongoPool',
-    create: function(callback) {
-        var mongodb = Db();
-        mongodb.open(function(err, db) {
-            callback(err, db);
-        })
-    },
-    destroy: function(mongodb) {
-        mongodb.close();
-    },
-    max: 100,
-    min: 5,
-    idleTimeoutMillis: 30000,
-    log: false
-});
 var crypto = require('crypto');
 
 function User(user) {
@@ -40,21 +24,21 @@ User.prototype.save = function(callback) {
         head: head
     };
     //打开数据库
-    pool.acquire(function(err, mongodb) {
+    mongodb.connect(settings.url, function(err, db) {
         if (err) {
             return callback(err); //错误，返回 err 信息
         }
         //读取 users 集合
-        mongodb.collection('users', function(err, collection) {
+        db.collection('users', function(err, collection) {
             if (err) {
-                pool.release(mongodb);
+                db.close();
                 return callback(err); //错误，返回 err 信息
             }
             //将用户数据插入 users 集合
             collection.insert(user, {
                 safe: true
             }, function(err, user) {
-                pool.release(mongodb);
+                db.close();
                 if (err) {
                     return callback(err); //错误，返回 err 信息
                 }
@@ -67,21 +51,21 @@ User.prototype.save = function(callback) {
 //读取用户信息
 User.get = function(name, callback) {
     //打开数据库
-    pool.acquire(function(err, mongodb) {
+    mongodb.connect(settings.url, function(err, db) {
         if (err) {
             return callback(err); //错误，返回 err 信息
         }
         //读取 users 集合
-        mongodb.collection('users', function(err, collection) {
+        db.collection('users', function(err, collection) {
             if (err) {
-                pool.release(mongodb);
+                db.close();
                 return callback(err); //错误，返回 err 信息
             }
             //查找用户名（name键）值为 name 一个文档
             collection.findOne({
                 name: name
             }, function(err, user) {
-                pool.release(mongodb);
+                db.close();
                 if (err) {
                     return callback(err); //失败！返回 err 信息
                 }
