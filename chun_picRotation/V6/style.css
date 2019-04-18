@@ -1,0 +1,204 @@
+@charset "utf-8";
+/* CSS Document */
+body {
+	width: 640px;
+	margin: 0;
+	font-family: "Helvetica Neue",Helvetica,Arial,"Microsoft Yahei","Hiragino Sans GB","Heiti SC","WenQuanYi Micro Hei",sans-serif;
+}
+
+#taobao-best {
+	position: relative;
+	height: 660px;
+}
+
+.show-swiper {
+	z-index: 3;
+	top: 80px;
+}
+
+.show-swiper .swiper-slide {
+	width: 395px;
+}
+
+.show-swiper .swiper-slide:last-child {
+	width: 95px;
+	color: #fff;
+}
+
+.show-swiper .swiper-slide:last-child .icon {
+	width: 32px;
+	height: 32px;
+	background: url(./uploads/more-icon.png) no-repeat center 50%/100% 100%;
+	display: block;
+	float: left;
+	margin-top: 260px;
+	margin-left: 5px;
+}
+
+.show-swiper .swiper-slide:last-child .text {
+	width: 21px;
+	font-size: 21px;
+	margin-top: 180px;
+	margin-left: 10px;
+	line-height: 1.5;
+	float: left;
+}
+
+.show-swiper .swiper-slide .goods {
+	width: 375px;
+	padding: 10px;
+	height: 500px;
+	margin: 40px 0;
+	border-radius: 8px;
+	background: url(./uploads/goods-bg.png);
+}
+
+.goods .c-top {
+	border-bottom: 1px solid #dcdcdd;
+	width: 100%;
+	float: left;
+}
+
+.goods .date {
+	width: 119px;
+	height: 318px;
+	border-right: 1px solid #adb4ba;
+	float: left;
+}
+
+.goods .date .year {
+	color: #050403;
+	font-weight: bold;
+	text-align: center;
+	margin-top: 35px;
+}
+
+.goods .date .day {
+	font-size: 55px;
+	text-align: center;
+	margin-top: 5px;
+	font-weight: bolder;
+	color: #080704;
+}
+
+.goods .date .oldyear {
+	color: #050403;
+	margin-top: 5px;
+	font-size: 22px;
+	width: 22px;
+	line-height: 1.4;
+	margin-left: 30px;
+	float: left;
+}
+
+.goods .date .oldday {
+	color: #050403;
+	margin-top: 5px;
+	font-size: 22px;
+	line-height: 1.4;
+	width: 22px;
+	margin-right: 30px;
+	float: right;
+}
+
+.goods .img {
+	width: 255px;
+	float: right;
+}
+
+.goods .img span {
+	color: #1a1918;
+	font-size: 32px;
+	text-align: center;
+	line-height: 60px;
+	display: block;
+}
+
+.goods .img img {
+	border-top-right-radius: 8px;
+}
+
+.goods .detail {
+	width: 335px;
+	margin: 0 20px;
+	float: left;
+}
+
+.goods .detail h2 {
+	font-weight: normal;
+	color: #312f30;
+	font-size: 23px;
+	margin-bottom: 0;
+}
+
+.goods .detail p {
+	color: #979797;
+	line-height: 1.5;
+	font-size: 18px;
+	margin-top: 8px;
+}
+
+.goods .detail 	ul {
+	padding-left: 0;
+	margin-left: 20px;
+	float: left;
+	margin-top: 0;
+}
+
+.goods .detail 	ul li {
+	float: left;
+	margin-right: 25px;
+	color: #737373;
+}
+
+.goods .detail .btn {
+	float: right;
+	margin-right: -10px;
+	margin-top: -5px;
+	width: 120px;
+	height: 40px;
+	line-height: 40px;
+	color: #fff;
+	text-align: center;
+	border-radius: 20px;
+	background: linear-gradient(90deg,#ffe13c,#ffa70f);
+}
+
+.bg-swiper {
+	position: absolute;
+	width: 100%;
+	height: 640px;
+	top: 0;
+	z-index: 1;
+}
+
+.bg-swiper .swiper-slide {
+	background: #000;
+}
+
+.bg-swiper .swiper-slide img {
+/* filter: blur(5px);性能太卡*/
+	width: 100%;
+	opacity: .5;
+}
+
+.mask {
+	/*clip-path: polygon(0px 80px, 640px 0px, 640px 170px,0px 170px);兼容性差
+	background:#fff;*/
+	background: url(./uploads/mask.png) no-repeat center bottom/100% auto;
+	position: absolute;
+	bottom: 0;
+	z-index: 2;
+	width: 100%;
+	height: 170px;
+}
+
+.bottom {
+	position: fixed;
+	bottom: 0;
+	width: 640px;
+}
+
+.bottom img {
+	display: block;
+}			

@@ -45,7 +45,7 @@
 
         ctx.fillStyle = "black";
 
-        // write Hours
+        // write Hours Point
         ctx.save();
         ctx.rotate(hr * (Math.PI / 6) + (Math.PI / 360) * min + (Math.PI / 21600) * sec)
         ctx.lineWidth = 14;
@@ -55,7 +55,7 @@
         ctx.stroke();
         ctx.restore();
 
-        // write Minutes
+        // write Minutes Point
         ctx.save();
         ctx.rotate((Math.PI / 30) * min + (Math.PI / 1800) * sec)
         ctx.lineWidth = 10;
@@ -65,7 +65,7 @@
         ctx.stroke();
         ctx.restore();
 
-        // Write seconds
+        // Write seconds Point
         ctx.save();
         ctx.rotate(sec * Math.PI / 30);
         ctx.strokeStyle = "#D40000";
@@ -125,22 +125,22 @@
         ctx2.save();
         for (var n = 6; n > 0; n--) {
             for (var i = 63; i >= 0; i--) {
-                var flag = yingyangArr[i].substr(6-n, 1);
+                var flag = yingyangArr[i].substr(6 - n, 1);
                 ctx2.beginPath();
                 ctx2.rotate(Math.PI / 32);
                 if (flag == 0) {
                     for (var j = -15; j < -5; j++) {
-                        ctx2.moveTo(j, 350 - n*7);
-                        ctx2.lineTo(j, 350 - n*7);
+                        ctx2.moveTo(j, 350 - n * 7);
+                        ctx2.lineTo(j, 350 - n * 7);
                     }
                     for (var k = 0; k < 10; k++) {
-                        ctx2.moveTo(k, 350 - n*7);
-                        ctx2.lineTo(k, 350 - n*7);
+                        ctx2.moveTo(k, 350 - n * 7);
+                        ctx2.lineTo(k, 350 - n * 7);
                     }
                 } else {
                     for (var o = -15; o < 10; o++) {
-                        ctx2.moveTo(o, 350 - n*7);
-                        ctx2.lineTo(o, 350 - n*7);
+                        ctx2.moveTo(o, 350 - n * 7);
+                        ctx2.lineTo(o, 350 - n * 7);
                     }
                 }
                 if (yingyangArrText[i].length == 1) {
